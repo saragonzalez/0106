@@ -48,7 +48,7 @@ public class Game
         Room campo, madrigueraUno, madrigueraDos, madrigueraTres, despensa;
       
         // create the rooms
-        campo = new Room("El topo esta en el campo");
+        campo = new Room("En el campo");
         madrigueraUno = new Room("En la madriguera uno");
         madrigueraDos = new Room("En la madriguera dos");
         madrigueraTres = new Room("En la madriguera tres");
@@ -109,8 +109,26 @@ public class Game
             System.out.print("west ");
         }
         System.out.println();
+        printLocationInfo();
     }
-
+    
+    public void printLocationInfo(){
+        System.out.print("Exits: ");
+        if(currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
+        }
+    
     /**
      * Given a command, process (that is: execute) the command.
      * Dado un comando, el proceso (es decir: lo ejecuta) el comando.
@@ -194,23 +212,10 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        if(currentRoom.northExit != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("west ");
-        }
-        System.out.println();
+            printLocationInfo();
         }
     }
-
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
@@ -228,3 +233,4 @@ public class Game
         }
     }
 }
+
