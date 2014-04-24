@@ -3,13 +3,22 @@
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
  *  can walk around some scenery. That's all. It should really be extended 
  *  to make it more interesting!
+ *  
+ *  Esta clase es la clase principal de la aplicación "World of Zuul". "World of Zuul" es un texto basado
+ *  en juego de aventura muy simple. Usuarios puede caminar por un paisaje. Eso es todo. Realmente 
+ *  debería ampliarse para que sea más interesante!   
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
  * 
+ *  Para jugar a este juego, cree una instancia de esta clase y llamar a la "obra" Método. 
+ *  
  *  This main class creates and initialises all the others: it creates all
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
+ *  
+ *  Esta clase principal crea y se inicializa todos los demás: crea todo Habitaciones, crea el 
+ *  analizador y comienza el juego. También evalúa y Ejecuta los comandos que devuelve el analizador.
  * 
  * @author  Michael KÃ¶lling and David J. Barnes
  * @version 2011.07.31
@@ -22,6 +31,7 @@ public class Game
         
     /**
      * Create the game and initialise its internal map.
+     * Crear el juego e inicializar su mapa interno.
      */
     public Game() 
     {
@@ -31,30 +41,32 @@ public class Game
 
     /**
      * Create all the rooms and link their exits together.
+     * Crea todas las habitaciones y vincular sus salidas juntos.
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room campo, madrigueraUno, madrigueraDos, madrigueraTres, despensa;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        campo = new Room("El topo esta en el campo");
+        madrigueraUno = new Room("En la madriguera uno");
+        madrigueraDos = new Room("En la madriguera dos");
+        madrigueraTres = new Room("En la madriguera tres");
+        despensa = new Room("En la despensa");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        campo.setExits(madrigueraUno, null, madrigueraDos,  madrigueraTres );
+        madrigueraUno.setExits(null, null, campo, null);
+        madrigueraDos.setExits(campo, despensa, null, null);
+        madrigueraTres.setExits(null, campo, null, null);
+        despensa.setExits(null, null, null, madrigueraDos);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = campo;  // start game campo
     }
 
     /**
      *  Main play routine.  Loops until end of play.
+     *  Rutina de reproducción principal. Los bucles hasta el final del juego.
      */
     public void play() 
     {            
@@ -73,6 +85,7 @@ public class Game
 
     /**
      * Print out the opening message for the player.
+     * Imprima el mensaje de apertura para el jugador.
      */
     private void printWelcome()
     {
@@ -100,6 +113,7 @@ public class Game
 
     /**
      * Given a command, process (that is: execute) the command.
+     * Dado un comando, el proceso (es decir: lo ejecuta) el comando.
      * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
      */
@@ -132,6 +146,7 @@ public class Game
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
+     * Aquí imprimimos algunos, críptico mensaje estúpido y una lista de la palabras de comando.
      */
     private void printHelp() 
     {
@@ -145,6 +160,8 @@ public class Game
     /** 
      * Try to go in one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
+     * Trate de ir en una dirección. Si hay una salida, introduzca 
+     * la nueva sala, de lo contrario se imprime un mensaje de error.
      */
     private void goRoom(Command command) 
     {
@@ -177,26 +194,27 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-            if(currentRoom.northExit != null) {
-                System.out.print("north ");
-            }
-            if(currentRoom.eastExit != null) {
-                System.out.print("east ");
-            }
-            if(currentRoom.southExit != null) {
-                System.out.print("south ");
-            }
-            if(currentRoom.westExit != null) {
-                System.out.print("west ");
-            }
-            System.out.println();
+        System.out.print("Exits: ");
+        if(currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
         }
     }
 
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
+     * "Quit(Salir)" se ingresó. Compruebe el resto de la orden para ver si realmente sale del juego.
      * @return true, if this command quits the game, false otherwise.
      */
     private boolean quit(Command command) 
