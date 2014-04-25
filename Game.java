@@ -100,7 +100,7 @@ public class Game
     private void printLocationInfo(){
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        if(currentRoom.northExit != null) {
+        if(currentRoom.Room.northExit != null) {
             System.out.print("north ");
         }
         if(currentRoom.eastExit != null) {

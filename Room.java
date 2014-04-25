@@ -6,8 +6,8 @@
  *
  * A "Room" represents one location in the scenery of the game.  It is 
  * connected to other rooms via exits.  The exits are labelled north, 
- * east, south, west.  For each direction, the room stores a reference
- * to the neighboring room, or null if there is no exit in that direction.
+ * east, south, west.  For eachdireccion, the room stores a reference
+ * to the neighboring room, or null if there is no exit in thatdireccion.
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 2011.07.31
@@ -33,7 +33,7 @@ public class Room
     }
 
     /**
-     * Define the exits of this room.  Every direction either leads
+     * Define the exits of this room.  Everydireccion either leads
      * to another room or is null (no exit there).
      * @param north The north exit.
      * @param east The east east.
@@ -63,6 +63,26 @@ public class Room
         return description;
     }
     
+    public Room getExit (String direccion)
+    {
+        Room nextRoom = null;
+        if(direccion.equals("north")) {
+            nextRoom = northExit;
+        }
+        if(direccion.equals("east")) {
+            nextRoom = eastExit;
+        }
+        if(direccion.equals("south")) {
+            nextRoom = southExit;
+        }
+        if(direccion.equals("west")) {
+            nextRoom = westExit;
+        }
+        if(direccion.equals("sureste")) {
+            nextRoom = suresteExit;
+        }
+        return nextRoom;
+    }
     
 
 }
