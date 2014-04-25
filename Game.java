@@ -55,11 +55,11 @@ public class Game
         despensa = new Room("En la despensa");
         
         // initialise room exits
-        campo.setExits(madrigueraUno, null, madrigueraDos,  madrigueraTres );
-        madrigueraUno.setExits(null, null, campo, null);
-        madrigueraDos.setExits(campo, despensa, null, null);
-        madrigueraTres.setExits(null, campo, null, null);
-        despensa.setExits(null, null, null, madrigueraDos);
+        campo.setExits(madrigueraUno, null, madrigueraDos,  madrigueraTres, null );
+        madrigueraUno.setExits(null, null, campo, null, null);
+        madrigueraDos.setExits(campo, despensa, null, null, null);
+        madrigueraTres.setExits(null, null, null, null, campo);
+        despensa.setExits(null, null, null, madrigueraDos, null);
 
         currentRoom = campo;  // start game campo
     }
@@ -111,6 +111,9 @@ public class Game
         }
         if(currentRoom.westExit != null) {
             System.out.print("west ");
+        }
+        if(currentRoom.suresteExit != null) {
+            System.out.print("sureste ");
         }
         System.out.println();
         }
@@ -189,6 +192,9 @@ public class Game
         }
         if(direction.equals("west")) {
             nextRoom = currentRoom.westExit;
+        }
+        if(direction.equals("sureste")) {
+            nextRoom = currentRoom.suresteExit;
         }
 
         if (nextRoom == null) {
