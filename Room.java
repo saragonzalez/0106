@@ -49,28 +49,10 @@ public class Room
         return description;
     }
 
+    
     public Room getExit (String direccion)
     {
-        Room nextRoom = null;
-        if(direccion.equals("north")) {
-            nextRoom = exits.get("north");
-        }
-        if(direccion.equals("east")) {
-            nextRoom = exits.get("east");
-        }
-        if(direccion.equals("south")) {
-            nextRoom = exits.get("south");
-        }
-        if(direccion.equals("west")) {
-            nextRoom = exits.get("west");
-        }
-        if(direccion.equals("sureste")) {
-            nextRoom = exits.get("sureste");
-        }
-        if(direccion.equals("noroeste")) {
-            nextRoom = exits.get("noroeste");
-        }
-        return nextRoom;
+        return exits.get(direccion); // Si no hay una entrada devolvera null
     }
 
     /**
