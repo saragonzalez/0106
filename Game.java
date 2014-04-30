@@ -55,11 +55,11 @@ public class Game
         despensa = new Room("En la despensa");
         
         // initialise room exits
-        campo.setExits(madrigueraUno, null, madrigueraDos, null, madrigueraTres);
-        madrigueraUno.setExits(null, null, campo, null, null);
-        madrigueraDos.setExits(campo, despensa, null, null, null);
-        madrigueraTres.setExits(campo,null, null, null, null);
-        despensa.setExits(null, null, null, madrigueraDos, null);
+        campo.setExits(madrigueraUno, null, madrigueraDos, null, madrigueraTres, null);
+        madrigueraUno.setExits(null, null, campo, null, null, null);
+        madrigueraDos.setExits(campo, despensa, null, null, null, null);
+        madrigueraTres.setExits(campo,null, null, null, null, null);
+        despensa.setExits(null, null, null, madrigueraDos, null, null);
 
         currentRoom = campo;  // start game campo
     }
