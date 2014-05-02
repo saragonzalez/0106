@@ -46,7 +46,7 @@ public class Room
      */
     public String getDescription()
     {
-        return description;
+         return "Tu estas " + description; 
     }
 
     public Room getExit (String direccion)
@@ -63,17 +63,17 @@ public class Room
     public String getExitString()
     {
         Set <String> nameOfDirection = exits.keySet();
-        String exitDescription ="Exit ";
+        String exitDescription ="Las salidas son: ";
         for(String direction: nameOfDirection){
-            exitDescription = direction + " ";
+            exitDescription += direction + " ";
         }
         return exitDescription;
     }
 
     /**
      * Return a long description of this room, of the form:
-     *     You are in the 'name of room'
-     *     Exits: north west southwest
+     *     You are in the 'name of room' --> getDescription
+     *     Exits: north west southwest -->getExitString
      * @return A description of the room, including exits.
      */
     public String getLongDescription()
