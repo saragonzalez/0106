@@ -31,7 +31,6 @@ public class Room
         exits = new HashMap<>();
     }
 
-     
     /**
      * Define an exit from this room.
      * @param direction The direction of the exit.
@@ -50,7 +49,6 @@ public class Room
         return description;
     }
 
-    
     public Room getExit (String direccion)
     {
         return exits.get(direccion); // Si no hay una entrada devolvera null
@@ -70,6 +68,17 @@ public class Room
             exitDescription = direction + " ";
         }
         return exitDescription;
+    }
+
+    /**
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'
+     *     Exits: north west southwest
+     * @return A description of the room, including exits.
+     */
+    public String getLongDescription()
+    {
+        return getDescription() +"\n"+ getExitString();
     }
 
 }
