@@ -48,11 +48,11 @@ public class Game
         Room campo, madrigueraUno, madrigueraDos, madrigueraTres, despensa;
       
         // create the rooms
-        campo = new Room("En el campo");
-        madrigueraUno = new Room("En la madriguera uno");
-        madrigueraDos = new Room("En la madriguera dos");
-        madrigueraTres = new Room("En la madriguera tres");
-        despensa = new Room("En la despensa");
+        campo = new Room("En el campo","encuentra una mochila", 100f);
+        madrigueraUno = new Room("En la madriguera uno", "hay una naranja", 25f);
+        madrigueraDos = new Room("En la madriguera dos", "hay un cacahuete", 2f);
+        madrigueraTres = new Room("En la madriguera tres","hay una manzana", 18f);
+        despensa = new Room("En la despensa","hay una aguja", 0.5F);
         
         // initialise room exits
         campo.setExit("north", madrigueraUno);
@@ -136,6 +136,9 @@ public class Game
         }
         else if (commandWord.equals("look")) {
             printLocationInfo();
+        }
+        else if (commandWord.equals("eat")){
+            System.out.println("You have eaten now and you are not hungry any more");
         }
         return wantToQuit;
     }
