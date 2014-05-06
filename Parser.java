@@ -62,4 +62,17 @@ public class Parser
             return new Command(null, word2); 
         }
     }
-}
+    /**
+    *  implementar un método en la clase Parser 
+    *  que commands es de tipo CommandWords e invocar dicho método desde la clase Game 
+    *  @return nos devuelva el atributo commands de dicha clase
+    */
+ 
+    public CommandWords comandos() 
+    {
+        return commands;
+    }
+ }
+ 
+
+
