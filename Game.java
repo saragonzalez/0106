@@ -28,6 +28,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room lastRoom;
         
     /**
      * Create the game and initialise its internal map.
@@ -74,6 +75,7 @@ public class Game
         madrigueraTres.addItem(new Item("hay una manzana", 18f));
         despensa.addItem(new Item("hay una aguja", 0.5F));
         currentRoom = campo;  // start game campo
+        lastRoom = null;
     }
 
     /**
@@ -145,6 +147,9 @@ public class Game
         else if (commandWord.equals("eat")){
             System.out.println("You have eaten now and you are not hungry any more");
         }
+        else if (commandWord.equals("back")){
+            back();
+        }
         return wantToQuit;
     }
 
@@ -187,6 +192,7 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
+            lastRoom = currentRoom;
             currentRoom = nextRoom;            
             printLocationInfo();
         }
@@ -208,5 +214,11 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
+    private void back()
+    {
+        currentRoom = lastRoom;
+        printLocationInfo();
+    }
+    
 }
 
