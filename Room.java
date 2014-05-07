@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Set;
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -18,20 +19,17 @@ public class Room
 {
     public String description;    
     private HashMap<String, Room> exits;
-    private String descriptionObjeto;
-    private float pesoObjeto;
+    private ArrayList <Item> items;
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description,String descriptionObjeto,float pesoObjeto) 
+    public Room(String description) 
     {
         this.description = description;
-        exits = new HashMap<>();
-        this.descriptionObjeto = descriptionObjeto;
-        this.pesoObjeto = pesoObjeto;
+        exits = new HashMap<>();        
     }
 
     /**
@@ -81,23 +79,29 @@ public class Room
      */
     public String getLongDescription()
     {
-        return getDescription() +"\n"+getDescripcionObjeto()+"\nSu peso es: "+pesoObjeto()+"g\n"+ getExitString();
+        String longDescription = "You are " + getDescription() + "\n" +getExitString() + "\n";
+        longDescription = "There are " + items.size() + " items \n";
+        for (Item item: items)
+        {
+            longDescription = " "+ item.getLongDescription() + "\n";
+        }
+        return longDescription;
     }
 
-    /**
-     * @return la descripcion del objeto a encontrar
-     */
-    public String getDescripcionObjeto()
+    public void addItem(Item item)
     {
-        return descriptionObjeto;
-    } 
-
-    /**
-     * @return el peso del objeto a encontrar
-     */ 
-    public float pesoObjeto() 
-    {
-        return pesoObjeto; 
+        items.add(item);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 

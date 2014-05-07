@@ -48,11 +48,11 @@ public class Game
         Room campo, madrigueraUno, madrigueraDos, madrigueraTres, despensa;
       
         // create the rooms
-        campo = new Room("En el campo","encuentra una mochila", 100f);
-        madrigueraUno = new Room("En la madriguera uno", "hay una naranja", 25f);
-        madrigueraDos = new Room("En la madriguera dos", "hay un cacahuete", 2f);
-        madrigueraTres = new Room("En la madriguera tres","hay una manzana", 18f);
-        despensa = new Room("En la despensa","hay una aguja", 0.5F);
+        campo = new Room("En el campo");
+        madrigueraUno = new Room("En la madriguera uno");
+        madrigueraDos = new Room("En la madriguera dos");
+        madrigueraTres = new Room("En la madriguera tres");
+        despensa = new Room("En la despensa");
         
         // initialise room exits
         campo.setExit("north", madrigueraUno);
@@ -68,6 +68,11 @@ public class Game
         
         despensa.setExit("west", madrigueraUno);
         
+        campo.addItem(new Item("encuentra una mochila", 100f));
+        madrigueraUno.addItem(new Item("hay una naranja", 25f));
+        madrigueraDos.addItem(new Item("hay un cacahuete", 2f));
+        madrigueraTres.addItem(new Item("hay una manzana", 18f));
+        despensa.addItem(new Item("hay una aguja", 0.5F));
         currentRoom = campo;  // start game campo
     }
 
